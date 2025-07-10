@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealSeeds | Career Strategy Showcase</title>
+    <meta name="description" content="A professional showcase of a powerful LinkedIn carousel post by RealSeeds, offering strategic career advice for job seekers.">
+    <meta name="keywords" content="RealSeeds, job seeker, career advice, resume tips, LinkedIn, interview preparation, career strategy">
+    <style>
+        :root {
+            --background-color: #F0F2F5;
+            --container-bg: #FFFFFF;
+            --primary-text: #050505;
+            --secondary-text: #65676B;
+            --accent-color: #007AFF;
+            --border-color: #CED0D4;
+            --button-hover: #F2F2F2;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--background-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .showcase-container {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 9 / 16;
+            background-color: var(--container-bg);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 18px;
+        }
+
+        .top-actions {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            gap: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .top-actions button {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--container-bg);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary-text);
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .top-actions button:hover {
+            background-color: var(--button-hover);
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .main-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-image-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* Corrected aspect ratio for your images */
+            position: relative;
+            background-color: #000;
+            flex-shrink: 0;
+        }
+
+        #carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .toggle-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .toggle-buttons button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .toggle-buttons button:hover {
+            transform: scale(1.05);
+        }
+        
+        #caption-window {
+            padding: 0 1rem 1rem 1rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--primary-text);
+        }
+
+        #caption-window h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        #caption-window p {
+            margin-bottom: 1rem;
+        }
+
+        hr.dotted {
+            border: none;
+            border-top: 1px dotted var(--border-color);
+            margin: 1rem 0;
+        }
+
+        #caption-window .meta-tags {
+            color: var(--secondary-text);
+            font-size: 0.85rem;
+        }
+        
+        #caption-window strong {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        #comments-window {
+            padding: 1rem;
+            border-top: 1px solid var(--border-color);
+            background-color: #FAFAFA;
+        }
+
+        .comment {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+        .comment:last-child {
+            margin-bottom: 0;
+        }
+
+        .comment img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: 2px;
+        }
+
+        .comment-body {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .comment-body strong {
+            font-weight: 600;
+            color: var(--primary-text);
+            display: inline;
+        }
+
+        .bottom-cta {
+            padding: 1rem;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--container-bg);
+            display: flex;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .cta-button {
+            width: 60%;
+            padding: 0.85rem;
+            border-radius: 999px;
+            border: none;
+            background-color: var(--accent-color);
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #0062CC;
+            transform: scale(1.03);
+        }
+
+        @media (min-width: 768px) {
+            .showcase-container {
+                max-width: 450px;
+                aspect-ratio: auto;
+                height: 95%;
+                max-height: 950px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="showcase-container">
+
+        <div class="top-actions">
+            <button onclick="window.open('assets/ABHISHEK SINGH SHEKHAWAT RESUME (1).pdf', '_blank')">Download My Resume</button>
+            <button onclick="window.location.href='https://www.abhisheksinghshekhawat.com'">Visit My Site</button>
+        </div>
+
+        <div class="main-content">
+            <div class="carousel-image-wrapper">
+                <img id="carousel-image" src="assets/1.jpg" alt="Carousel Slide Content">
+            </div>
+
+            <div class="toggle-buttons">
+                <button id="prev-btn">⟨</button>
+                <button id="next-btn">⟩</button>
+            </div>
+            
+            <div id="caption-window">
+                <!-- JS will populate this -->
+            </div>
+
+            <div id="comments-window">
+                <!-- JS will populate this -->
+            </div>
+        </div>
+
+        <div class="bottom-cta">
+            <button class="cta-button" onclick="window.location.href='tel:+919928130195'">Call Me</button>
+        </div>
+    </div>
+
+    <script>
+        const carouselData = [
+            {
+                image: 'assets/1.jpg',
+                caption: `
+                    <h3>Are You Making These Career-Limiting Moves?</h3>
+                    <p>In today's competitive job market, talent isn't always enough. A brilliant resume can be instantly rejected by automated systems, and a perfect candidate can fail an interview due to simple, avoidable errors.</p>
+                    <p>This is a strategic guide to navigate the modern hiring landscape. We'll deconstruct the most common pitfalls that prevent talented individuals from landing the roles they deserve. Let's transform your approach from hopeful to strategic. With <strong>@RealSeeds</strong>.</p>
+                    <hr class="dotted">
+                    <div class="meta-tags">
+                        Keywords: Job Search Strategy, Career Development, Hiring Process<br>
+                        <strong>#CareerAdvice #JobSeeker #Hiring #GetHired #ProfessionalGrowth</strong>
+                    </div>
+                `,
+                comments: [
+                    { avatar: 'userA', username: 'kavita.desai', text: 'This is so timely. I feel like I\'ve been shouting into the void with my applications. Eager to see the rest of this!' },
+                    { avatar: 'userB', username: 'rohan_mehta', text: '"Hopeful to strategic" really hits home. Looking forward to the insights. Thanks <strong>@RealSeeds</strong>!' },
+                    { avatar: 'userC', username: 'priya_analytics', text: 'Finally, someone talking about the strategy behind the job hunt. This is much needed.' }
+                ]
+            },
+            {
+                image: 'assets/2.jpg',
+                caption: `
+                    <h3>The Pitfall of the One-Size-Fits-All Resume</h3>
+                    <p>Submitting the same resume for multiple, varied roles is one of the fastest routes to the rejection pile. Applicant Tracking Systems (ATS) are programmed to search for specific keywords from the job description. A generic document will almost always fail this initial screening.</p>
+                    <p>Your resume isn't a biography; it's a marketing document tailored to a specific audience. Each application requires a custom-fit approach, highlighting the skills and experiences that directly address the employer's needs. This single change can dramatically increase your callback rate.</p>
+                    <hr class="dotted">
+                    <div class="meta-tags">
+                        Keywords: Resume Writing, Applicant Tracking System (ATS), Customization<br>
+                        <strong>#ResumeTips #ATS #JobApplication #CareerStrategy #RealSeeds</strong>
+                    </div>
+                `,
+                comments: [
+                    { avatar: 'userD', username: 'siddharth.rao', text: 'The ATS explanation is a game-changer. I never realized it was that black and white. Time to start customizing.' },
+                    { avatar: 'userA', username: 'kavita.desai', text: 'This explains so much. I spent a whole weekend re-doing my master resume based on this. Thank you!' },
+                    { avatar: 'userE', username: 'neha_ux', text: 'Great point about it being a marketing document, not a biography. Shifting my mindset now.' }
+                ]
+            },
+            {
+                image: 'assets/3.jpg',
+                caption: `
+                    <h3>Your Digital Footprint: The Underutilized LinkedIn Profile</h3>
+                    <p>Treating LinkedIn as a mere online resume is a massive missed opportunity. It is the world's largest professional network, and for recruiters, it's the primary platform for candidate discovery and validation. A sparse or inactive profile suggests a lack of professional engagement.</p>
+                    <p>Cultivate your profile into a dynamic portfolio. Use a professional headshot, a compelling headline that sells your value proposition, and a custom banner. Regularly share industry insights and feature your proudest projects. An optimized profile works for you 24/7, attracting opportunities you never even applied for.</p>
+                    <hr class="dotted">
+                    <div class="meta-tags">
+                        Keywords: LinkedIn Profile, Personal Branding, Digital Networking, Social Selling<br>
+                        <strong>#LinkedInTips #PersonalBranding #CareerDevelopment #ProfessionalNetwork</strong>
+                    </div>
+                `,
+                comments: [
+                    { avatar: 'userF', username: 'arjun_g', text: 'I\'m guilty of this. My profile hasn\'t been updated in a year. This is the push I needed.' },
+                    { avatar: 'userG', username: 'tanvi_shah', text: 'The tip about the custom banner is so simple but so effective! Made mine this morning. Thanks <strong>@RealSeeds</strong>!' },
+                    { avatar: 'userB', username: 'rohan_mehta', text: 'After updating my headline and skills, I actually got a profile view from a recruiter at my dream company.' }
+                ]
+            },
+            {
+                image: 'assets/4.jpg',
+                caption: `
+                    <h3>Moving Beyond "Apply & Pray": The Power of Proactive Networking</h3>
+                    <p>Relying solely on job portals is a passive and often frustrating strategy. The vast majority of positions, especially senior ones, are filled through referrals and networking. This "hidden job market" is inaccessible to those who only click "Apply."</p>
+                    <p>Shift your focus from applying to connecting. Identify key people at your target companies. Engage with their content thoughtfully. Request brief informational interviews to learn, not to ask for a job. Building genuine professional relationships opens doors that applications alone cannot.</p>
+                    <hr class="dotted">
+                    <div class="meta-tags">
+                        Keywords: Professional Networking, Referrals, Hidden Job Market, Relationship Building<br>
+                        <strong>#Networking #CareerGrowth #JobSearch #ProactiveCareer</strong>
+                    </div>
+                `,
+                comments: [
+                    { avatar: 'userC', username: 'priya_analytics', text: 'This is the hardest part for me as an introvert, but the logic is undeniable. Starting with 2 connection requests a day.' },
+                    { avatar: 'userH', username: 'vikas_m', text: 'Got my last job through a referral. Can confirm this is 100% true. Great advice.' },
+                    { avatar: 'userA', username: 'kavita.desai', text: 'The idea of an "informational interview" is brilliant. Takes the pressure off.' }
+                ]
+            },
+            {
+                image: 'assets/5.jpg',
+                caption: `
+                    <h3>From Unstructured Answers to Compelling Stories: Mastering the Interview</h3>
+                    <p>Entering an interview unprepared is a disservice to your skills and experience. When asked behavioral questions ("Tell me about a time when..."), unstructured or rambling answers can be perceived as a lack of preparation or poor communication skills.</p>
+                    <p>The STAR method (Situation, Task, Action, Result) is your framework for success. It transforms your experiences into compelling, concise stories that demonstrate your competency. Prepare 3-5 strong STAR stories for your key achievements. This preparation is the foundation of true interview confidence.</p>
+                    <hr class="dotted">
+                    <div class="meta-tags">
+                        Keywords: Interview Preparation, STAR Method, Behavioral Questions, Public Speaking<br>
+                        <strong>#InterviewTips #STARmethod #JobInterview #CareerPrep #RealSeeds</strong>
+                    </div>
+                `,
+                comments: [
+                    { avatar: 'userE', username: 'neha_ux', text: 'I always struggled with behavioral questions. The STAR method is exactly the structure I needed. Thank you!' },
+                    { avatar: 'userB', username: 'rohan_mehta', text: 'Practicing my STAR stories out loud before my last interview made a huge difference in my confidence.' },
+                    { avatar: 'userI', username: 'ananya_hr', text: 'As an HR person, I can tell you that a candidate using the STAR method stands out immediately. Excellent advice.' }
+                ]
+            },
+            {
+                image: 'assets/6.jpg',
+                caption: `
+                    <h3>The Deciding Factor: Why Soft Skills Outweigh Hard Skills</h3>
+                    <p>Your technical abilities might qualify you for a role, but your soft skills—communication, collaboration, problem-solving, and adaptability—are what secure the offer and drive long-term success. Companies hire people, not just skillsets.</p>
+                    <p>Integrate your soft skills into your career narrative. Don't just list them; demonstrate them. When describing a project, talk about how you navigated a team conflict or persuaded a stakeholder. Frame your accomplishments in the context of the collaboration and communication that made them possible.</p>
+                    <hr class="dotted">
+                    <div class="meta-tags">
+                        Keywords: Soft Skills, Emotional Intelligence, Teamwork, Leadership, Communication<br>
+                        <strong>#SoftSkills #Employability #FutureOfWork #TeamPlayer</strong>
+                    </div>
+                `,
+                comments: [
+                    { avatar: 'userF', username: 'arjun_g', text: 'A crucial reminder for tech-focused people like me. We often forget to highlight the "how" behind the "what".' },
+                    { avatar: 'userJ', username: 'diya_pm', text: 'As a project manager, this is everything. My job is 90% soft skills. So glad you\'re highlighting this!' },
+                    { avatar: 'userD', username: 'siddharth.rao', text: 'This helps me re-frame my project descriptions on my resume. Thank you <strong>@RealSeeds</strong>.' }
+                ]
+            },
+            {
+                image: 'assets/7.jpg',
+                caption: `
+                    <h3>Take Control of Your Career Narrative</h3>
+                    <p>Your job search is not a passive wait for discovery; it is an active campaign that you lead. By internalizing these strategies, you shift from being a candidate to being a strategic partner—someone who understands the needs of a business and can clearly articulate their value.</p>
+                    <p>This is the foundation of a successful career. At <strong>@RealSeeds</strong>, our mission is to provide you with the tools and mindset to build that foundation. Follow us for continued insights and take the first step towards owning your professional journey.</p>
+                    <hr class="dotted">
+                    <div class="meta-tags">
+                        Keywords: Career Ownership, Professional Mindset, Empowerment, Long-term Success<br>
+                        <strong>#CareerEmpowerment #SuccessMindset #OwnYourCareer #RealSeeds</strong>
+                    </div>
+                `,
+                comments: [
+                    { avatar: 'userA', username: 'kavita.desai', text: 'What an empowering way to end the series. Feeling motivated and ready to take action. Thank you for this incredible guide!' },
+                    { avatar: 'userC', username: 'priya_analytics', text: 'This entire series has been more valuable than any career workshop I\'ve attended. Thank you <strong>@RealSeeds</strong>.' },
+                    { avatar: 'userH', username: 'vikas_m', text: 'Bookmarking this whole thing. This is the new playbook for my job search.' }
+                ]
+            }
+        ];
+
+        let currentIndex = 0;
+
+        const carouselImage = document.getElementById('carousel-image');
+        const captionWindow = document.getElementById('caption-window');
+        const commentsWindow = document.getElementById('comments-window');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        function renderComments(comments) {
+            commentsWindow.innerHTML = ''; // Clear previous comments
+            comments.forEach(comment => {
+                const commentEl = document.createElement('div');
+                commentEl.className = 'comment';
+                commentEl.innerHTML = `
+                    <img src="https://i.pravatar.cc/40?u=${comment.avatar}" alt="User Avatar">
+                    <div class="comment-body">
+                        <strong>${comment.username}</strong> ${comment.text}
+                    </div>
+                `;
+                commentsWindow.appendChild(commentEl);
+            });
+        }
+
+        function updateCarousel(index) {
+            carouselImage.style.opacity = 0;
+            
+            setTimeout(() => {
+                const data = carouselData[index];
+                carouselImage.src = data.image;
+                carouselImage.alt = `Showcase slide ${index + 1}`;
+                captionWindow.innerHTML = data.caption;
+                renderComments(data.comments);
+                
+                carouselImage.style.opacity = 1;
+            }, 300);
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + carouselData.length) % carouselData.length;
+            updateCarousel(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % carouselData.length;
+            updateCarousel(currentIndex);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCarousel(currentIndex);
+        });
+    </script>
+
+</body>
+</html>
